@@ -72,22 +72,18 @@ public class MainActivity extends Activity {
                             JSONObject jsonObject=new JSONObject(response);
 //                            JSONArray jsonArray=jsonObject.getJSONArray("server_response");
                             JSONArray jsonArray=jsonObject.getJSONArray("news");
-
                             for (int i=0;i<jsonArray.length();i++){
                                 JSONObject  object=jsonArray.getJSONObject(i);
-
                                 News items=new News(
                                         object.getString("title"),
                                         object.getString("content"),
                                         object.getString("date"),
                                         object.getString("image")
                                 );
-
                                 newsList.add(items);
-
                             }
 
-                            adapter=new NewsAdapter(newsList,getApplicationContext());
+                            adapter=new NewsAdapter(newsList,MainActivity.this);
                             recyclerView.setAdapter(adapter );
                         } catch (JSONException e) {
                             e.printStackTrace();

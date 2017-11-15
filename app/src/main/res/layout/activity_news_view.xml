@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.autojobs.news.autonews.NewsViewActivity">
+    <ImageView
+        android:id="@+id/image_newsview_photo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+
+        />
+
+        <TextView
+            android:id="@+id/textView_newsview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/textView_newsview_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Date"/>
+
+    <TextView
+        android:id="@+id/textView_newsview_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="desc"
+        android:textAlignment="gravity"
+        android:inputType="textMultiLine" />
+
+
+</LinearLayout>

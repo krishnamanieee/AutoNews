@@ -1,14 +1,17 @@
 package com.autojobs.news.autonews.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.autojobs.news.autonews.NewsViewActivity;
 import com.autojobs.news.autonews.R;
 import com.squareup.picasso.Picasso;
 
@@ -42,9 +45,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         String des=news.getDescription();
         holder.textView_title.setText(news.getTitle());
         holder.textView_date.setText(news.getDate());
-       holder.textView_des.setText( des.substring(0,50)+"...");
+       holder.textView_des.setText( des.substring(0,100)+"...");
      Picasso.with(context)
                 .load("http://autojobshere.com/admin/"+news.getImage()).into(holder.imageView_photo);
+
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, NewsViewActivity.class);
+                intent.putExtra("title",news.getTitle().toString());
+                intent.putExtra("date",news.getDate());
+                intent.putExtra("des",news.getDescription());
+                intent.putExtra("photo",news.getImage());
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -58,6 +73,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         TextView textView_title,textView_date,textView_des;
         ImageView imageView_photo;
+        LinearLayout linearLayout;
 
 
         public ViewHolder(View itemView) {
@@ -67,6 +83,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             textView_date=(TextView) itemView.findViewById(R.id.textView_date);
             textView_des=(TextView) itemView.findViewById(R.id.textView_desc);
             imageView_photo=(ImageView) itemView.findViewById(R.id.img_photo);
+            linearLayout=(LinearLayout) itemView.findViewById(R.id.linerlayout_view);
 
 
         }
